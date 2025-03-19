@@ -16,9 +16,11 @@ const app = express()
 // app.use(express.urlencoded({extended: true}))	// for parsing application/x-www-form-urlencoded 
 // app.use(bodyParser.urlencoded({extended: true}))
 // app.use(bodyParser.urlencoded())
-app.use(cors({origin: 'https://aarostami.github.io/project28-GooglePlayList/'}))
+//app.use(cors({origin: 'https://aarostami.github.io/project28-GooglePlayList/'}))
+app.use(cors({origin: '*'}))
 
 app.get('/', function(req, res) {
+	res.set('Access-Control-Allow-Origin', '*')
 	res.send('server is on')
 })
 
@@ -33,6 +35,7 @@ app.get('/category', function (req, res) {
 
 app.post('/', bodyParser.json(), async function (req, res) {
 	res.set('Access-Control-Allow-Origin', '*')
+	res.header("Access-Control-Allow-Origin", "*")
 	let newgetList = [];
 	let cat = req.body.catName
 	let counter = req.body.counter
@@ -63,7 +66,7 @@ app.post('/', bodyParser.json(), async function (req, res) {
 		}
 		newgetList = data;
 	});
-
+	console.log(newgetList)
 	// return newgetList
 	res.send(newgetList)
 })
