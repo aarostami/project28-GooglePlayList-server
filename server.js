@@ -23,6 +23,7 @@ app.get('/', function(req, res) {
 })
 
 app.get('/category', function (req, res) {
+	res.set('Access-Control-Allow-Origin', '*')
 	// return { category: gplay.category }
 	res.send({ category: gplay.category })
 	/* return (category.length) ? Object.keys(category).map((value) =>
@@ -31,6 +32,7 @@ app.get('/category', function (req, res) {
 })
 
 app.post('/', bodyParser.json(), async function (req, res) {
+	res.set('Access-Control-Allow-Origin', '*')
 	let newgetList = [];
 	let cat = req.body.catName
 	let counter = req.body.counter
@@ -67,6 +69,7 @@ app.post('/', bodyParser.json(), async function (req, res) {
 })
 
 /* app.post('/', bodyParser.json(), function (req, res) {
+	res.set('Access-Control-Allow-Origin', '*')
 	console.log(req.body)
 	res.end('heelo')
 }) */
