@@ -16,7 +16,11 @@ const app = express()
 // app.use(express.urlencoded({extended: true}))	// for parsing application/x-www-form-urlencoded 
 // app.use(bodyParser.urlencoded({extended: true}))
 // app.use(bodyParser.urlencoded())
-app.use(cors())
+app.use(cors({origin: 'https://aarostami.github.io/project28-GooglePlayList/'}))
+
+app.get('/', function(req, res) {
+	res.send('server is on')
+})
 
 app.get('/category', function (req, res) {
 	// return { category: gplay.category }
